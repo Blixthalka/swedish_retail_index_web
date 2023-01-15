@@ -1,6 +1,6 @@
 import ReactECharts from 'echarts-for-react';
-import React, { useEffect, useState } from 'react';
-import { formatShortDate, formatDate } from '../utils/util';
+import React from 'react';
+import { formatShortDate } from '../utils/util';
 
 import { graphic } from 'echarts';
 
