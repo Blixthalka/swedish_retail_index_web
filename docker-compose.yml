@@ -11,15 +11,12 @@ services:
       - ./certbot/www:/var/www/certbot/:ro
       - ./certbot/conf/:/etc/letsencrypt/:ro
   core:
-    #image: swedish_retail_index_core
     image: ghcr.io/blixthalka/swedish_retail_index_core:master
     expose:
       - "8082"
-    ports:
-      - "8082:8082"
     volumes:
-    - "/Users/emil/prog/swedish_retail_index/core/mnesia:/swedish_retail_index/mnesia/:rw"
-    # - "/swedish_retail_index/mnesia/:/swedish_retail_index/mnesia/:rw"
+    #- "/Users/emil/prog/swedish_retail_index/core/mnesia:/swedish_retail_index/mnesia/:rw"
+     - "/swedish_retail_index/mnesia/:/swedish_retail_index/mnesia/:rw"
   # certbot:
   #   image: certbot/certbot:latest
   #   volumes:
