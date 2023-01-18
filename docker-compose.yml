@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  web:
+  nginx:
     image: ghcr.io/blixthalka/swedish_retail_index_web:master
     ports:
       - 80:80
@@ -8,8 +8,9 @@ services:
     depends_on:
       - core
     volumes:
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/letsencrypt/:ro
+      - /srindex/certbot/www:/var/www/certbot/:ro
+      - /srindex/certbot/conf/:/etc/letsencrypt/:ro
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
   core:
     image: ghcr.io/blixthalka/swedish_retail_index_core:master
     expose:
@@ -22,5 +23,6 @@ services:
   certbot:
     image: certbot/certbot:latest
     volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
+      - /srindex/certbot/www/:/var/www/certbot/:rw
+      - /srindex/certbot/conf/:/etc/letsencrypt/:rw
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
