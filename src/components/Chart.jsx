@@ -29,8 +29,8 @@ function Chart({ className, data }) {
         },
         yAxis: {
             type: 'value',
-            min: Math.round(Number(data.min) - 1),
-            max: Math.round(Number(data.max) + 1),
+            min: Math.floor(Number(data.min) - 2),
+            max: Math.ceil(Number(data.max) + 2),
             splitLine: {
                 lineStyle: {
                     type: "dashed",

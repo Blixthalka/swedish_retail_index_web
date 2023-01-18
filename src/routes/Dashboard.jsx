@@ -4,20 +4,6 @@ import IncludedStocksTable from '../components/IncludedStocksTable';
 import Performance from '../components/Performance';
 
 function Dashboard() {
-  const [accum, setAccum] = useState(undefined);
-
-  useEffect(() => {
-    fetch(`/api/index`)
-      .then(i => i.json())
-      .then(i => {
-        setAccum(i)
-      })
-  }, [])
-
-  if (!accum) {
-    return (<></>)
-  }
-
   return (
     <div className="my-20 grid gap-20">
       <div>
