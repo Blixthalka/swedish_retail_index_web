@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Footer from '../components/Footer';
 import IncludedStocksTable from '../components/IncludedStocksTable';
 import Performance from '../components/Performance';
