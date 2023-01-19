@@ -27,7 +27,7 @@ function Performance() {
     return (
         <>
             <div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 justify-items-center sm:justify-items-start gap-5 mb-20   rounded-xl p-5">
+                <div className="grid grid-cols-2 sm:grid-cols-4 justify-items-center sm:justify-items-start gap-5 mb-20 ">
                     <div className=''>
                         <p className="text-gray-400 text-sm">{formatShortDate(data.date)}</p>
                         <h4 className="text-2xl font-medium text-white">{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(data.value)}`}</h4>
