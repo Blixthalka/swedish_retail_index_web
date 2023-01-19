@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { formatDate, formatShortDate } from '../utils/util';
+import { formatShortDate } from '../utils/util';
 import Chart from './Chart';
 
 
