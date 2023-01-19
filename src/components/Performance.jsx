@@ -3,12 +3,6 @@ import { formatShortDate } from '../utils/util';
 import Chart from './Chart';
 
 
-function Num(num) {
-    return (
-        <span className={`text-sm ${Number(num) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(num)} %`}</span>
-    )
-}
-
 function Performance() {
     const [data, setData] = useState(undefined);
 
