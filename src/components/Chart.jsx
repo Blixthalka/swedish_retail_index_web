@@ -4,10 +4,11 @@ import { formatShortDate } from '../utils/util';
 
 import { graphic } from 'echarts';
 
-function Chart({ className, data }) {
+function Chart({ data, ...other }) {
     if (!data?.graph || data?.graph.length <= 1) {
         return (<></>)
     }
+    console.log(data)
 
     let option = {
         backgroundColor: "transparent",
@@ -76,23 +77,23 @@ function Chart({ className, data }) {
                 showSymbol: false,
                 smooth: true,
                 areaStyle: {
-                     color: new graphic.LinearGradient(0, 0, 0, 1, [
+                    color: new graphic.LinearGradient(0, 0, 0, 1, [
                         {
-                          offset: 0,
-                          color: 'rgba(255, 255, 255, 0.1)'
+                            offset: 0,
+                            color: 'rgba(255, 255, 255, 0.1)'
                         },
                         {
-                          offset: 1,
-                          color: 'rgba(255, 255, 255, 0.00)'
+                            offset: 1,
+                            color: 'rgba(255, 255, 255, 0.00)'
                         }])
-                  }
+                }
             }
         ]
     };
 
 
     return (
-        <div className={className}>
+        <div {...other}>
             <ReactECharts
                 option={option}
                 notMerge={true}

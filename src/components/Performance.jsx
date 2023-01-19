@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { formatDate } from '../utils/util';
+import { formatDate, formatShortDate } from '../utils/util';
 import Chart from './Chart';
+
+
+function Num(num) {
+    return (
+        <span className={`text-sm ${Number(num) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(num)} %`}</span>
+    )
+}
 
 function Performance() {
     const [data, setData] = useState(undefined);
@@ -18,27 +25,32 @@ function Performance() {
     }
 
     return (
-        <div>
-            <div className="grid sm:grid-cols-2 gap-10 justify-items-center border border-gray-800 p-5 ">
-                <div className=''>
-                    {/* <p className="text-gray-400 text-sm font-extralight">{formatDate(data.date)}</p> */}
-                    <h4 className="text-4xl font-medium text-white">{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(data.value)}`}</h4>
-                </div>
-                <div>
-                    {/* <p className="text-gray-400 text-sm font-extralight">Change</p> */}
-                    <h4 className={`text-4xl font-medium ${Number(data.change) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(data.change)} %`}</h4>
-                </div>
-            </div>
+        <>
             <div>
-                <div className="border border-t-0 border-gray-800 mb-20 py-2 px-4 inline-block ">
-                    <p className="text-gray-400 text-sm ">close</p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 justify-items-center sm:justify-items-start gap-5 mb-20   rounded-xl p-5">
+                    <div className=''>
+                        <p className="text-gray-400 text-sm">{formatShortDate(data.date)}</p>
+                        <h4 className="text-2xl font-medium text-white">{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(data.value)}`}</h4>
+                    </div>
+                    <div>
+                        <p className="text-gray-400 text-sm ">{formatShortDate(data.date)}</p>
+                        <h4 className={`text-2xl font-medium ${Number(data.last_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(data.last_change)} %`}</h4>
+                    </div>
+                    <div>
+                        <p className="text-gray-400 text-sm ">ytd</p>
+                        <h4 className={`text-2xl font-medium ${Number(data.from_start_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(data.from_start_change)} %`}</h4>
+                    </div>
+                    <div>
+                        <p className="text-gray-400 text-sm ">start</p>
+                        <h4 className={`text-2xl font-medium ${Number(data.from_start_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(data.from_start_change)} %`}</h4>
+                    </div>
                 </div>
-                <div className="border border-t-0 border-l-0 border-gray-800 mb-20 py-2 px-4 inline-block ">
-                    <p className="text-gray-400 text-sm ">{formatDate(data.date)}</p>
-                </div>
-            </div>
-            <Chart data={data} />
-        </div>
+
+
+                <Chart data={data} />
+
+            </div >
+        </>
     );
 }
 

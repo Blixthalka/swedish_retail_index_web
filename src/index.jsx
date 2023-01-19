@@ -6,7 +6,7 @@ import {
 import App from './App';
 import './index.css';
 import Wrapper from './Wrapper';
-import Dashboard from './routes/Dashboard';
+import Index from './routes/Index';
 
 
 
@@ -16,7 +16,7 @@ ReactDOM.render(
       <Routes>
         <Route element={<App />}>
           <Route path="/" element={<Wrapper />} >
-            <Route index element={<Dashboard />} />
+            <Route index element={<Index />} />
           </Route>
         </Route>
       </Routes>

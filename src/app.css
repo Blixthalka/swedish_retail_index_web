@@ -1,10 +1,10 @@
 table {
     @apply text-white w-full;
 }
-td, th {
-    @apply p-2 border border-gray-800 text-sm bg-background text-left;
-}
 
+td, th {
+    @apply p-2 border border-gray-800 text-sm  text-left;
+}
 .td-num {
     @apply text-right tabular-nums;
 }
