@@ -16,16 +16,17 @@ function Chart({ data, ...other }) {
             color: '#9ca3af',
             fontFamily: 'JetBrains Mono, sans-serif',
         },
+        legend: {
+            show: false,
+        },
         xAxis: {
             type: 'category',
             boundaryGap: false,
             axisLabel: {
-                fontSize: 14,
+                fontSize: 12,
                 showMinLabel: false,
                 showMaxLabel: false,
-                formatter: function (value) {
-                    return formatShortDate(value);
-                }
+                formatter: formatShortDate
             }
         },
         yAxis: {
@@ -39,9 +40,12 @@ function Chart({ data, ...other }) {
                 }
             },
             minInterval: 1,
+            position: 'right',
             axisLabel: {
-                show: false,
-                fontSize: 14,
+                show: true,
+                inside: true,
+                showMinLabel: false,
+                fontSize: 12,
             }
         },
         tooltip: {
@@ -54,28 +58,37 @@ function Chart({ data, ...other }) {
             },
             axisPointer: {
                 type: 'line'
-            },
-            formatter: function (params) {
-                console.log(JSON.stringify(params[0]))
-                const p = params[0]
-                return `${formatShortDate(p.name)} <br />
-                        <strong>${p.value[1]}</strong>`;
             }
         },
         grid: {
             left: '0',
-            right: '0',
+            right: '5px',
             bottom: '0',
-            top: '0',
+            top: '5px',
             containLabel: true
         },
         series: [
+            {
+
+                data: data.graph.map(d => [d.date, d.compare]),
+                type: 'line',
+                color: '#4b5563',
+                showSymbol: false,
+                smooth: true,
+                lineStyle: {
+                    width: 2
+                },
+                name: data.compare_name
+            },
             {
                 data: data.graph.map(d => [d.date, d.value]),
                 type: 'line',
                 color: '#fff',
                 showSymbol: false,
                 smooth: true,
+                lineStyle: {
+                    width: 2
+                },
                 areaStyle: {
                     color: new graphic.LinearGradient(0, 0, 0, 1, [
                         {
@@ -86,8 +99,9 @@ function Chart({ data, ...other }) {
                             offset: 1,
                             color: 'rgba(255, 255, 255, 0.00)'
                         }])
-                }
-            }
+                },
+                name: "SRI"
+            },
         ]
     };
 

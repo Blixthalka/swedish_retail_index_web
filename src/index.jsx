@@ -5,8 +5,8 @@ import {
 } from "react-router-dom";
 import App from './App';
 import './index.css';
-import Wrapper from './Wrapper';
 import Index from './routes/Index';
+import Wrapper from './Wrapper';
 
 
 
