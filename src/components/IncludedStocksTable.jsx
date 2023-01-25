@@ -18,14 +18,14 @@ const IncludedStocksTable = ({ className }) => {
 
     return (
         <div className={className}>
-            <h3 className="text-gray-400 text-lg mb-3">Stocks Included</h3>
+            <h3 className="text-gray-400 text-lg mb-3">Underliggande Aktier</h3>
             <table className="">
                 <thead>
                     <tr>
                         <th className="th-num hidden sm:table-cell">#</th>
-                        <th className="">Name</th>
-                        <th className="th-num">Owners</th>
-                        <th className="th-num">Weight</th>
+                        <th className="">Namn</th>
+                        <th className="th-num">Ägare</th>
+                        <th className="th-num">Vikt</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +40,7 @@ const IncludedStocksTable = ({ className }) => {
                 </tbody>
             </table>
             <div className="flex justify-end">
-                <Button text={showAll ? "See Less" : "See All"} className="mt-5" onClick={(e) => setShowAll(!showAll)} />
+                <Button text={showAll ? "See Mindre" : "Se Alla"} className="mt-5" onClick={(e) => setShowAll(!showAll)} />
             </div>
         </div>
     );

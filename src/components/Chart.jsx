@@ -45,8 +45,9 @@ function Chart({ data, ...other }) {
                 show: true,
                 inside: true,
                 showMinLabel: false,
-                fontSize: 12,
-            }
+                fontSize: 12
+            },
+            z: 3
         },
         tooltip: {
             trigger: 'axis',
@@ -78,7 +79,8 @@ function Chart({ data, ...other }) {
                 lineStyle: {
                     width: 2
                 },
-                name: data.compare_name
+                name: data.compare_name,
+                z: 2
             },
             {
                 data: data.graph.map(d => [d.date, d.value]),
@@ -100,7 +102,8 @@ function Chart({ data, ...other }) {
                             color: 'rgba(255, 255, 255, 0.00)'
                         }])
                 },
-                name: "SRI"
+                name: "SRI",
+                z: 4
             },
         ]
     };

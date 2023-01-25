@@ -5,7 +5,7 @@ function Footer() {
         <div>
             <div className='flex items-center  mt-5'>
                 <ArrowPathIcon className="w-5 h-5 text-gray-500 mr-3" />
-                <span className="text-center  text-white text-sm"><a href="https://twitter.com/srindex_" className="text-blue-400 hover:text-blue-500">@srindex_</a> on Twitter.</span>
+                <span className="text-center  text-white text-sm">Följ <a href="https://twitter.com/srindex_" className="text-blue-400 hover:text-blue-500">@srindex_</a> på Twitter för uppdateringar.</span>
             </div>
         </div>
     )

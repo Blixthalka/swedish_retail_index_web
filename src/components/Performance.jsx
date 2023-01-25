@@ -31,11 +31,11 @@ function Performance() {
                         <h4 className={`text-2xl font-medium ${Number(data.last_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(data.last_change)} %`}</h4>
                     </div>
                     <div>
-                        <p className="text-gray-400 text-sm ">ytd</p>
+                        <p className="text-gray-400 text-sm ">i år</p>
                         <h4 className={`text-2xl font-medium ${Number(data.from_start_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(data.from_start_change)} %`}</h4>
                     </div>
                     <div>
-                        <p className="text-gray-400 text-sm ">start</p>
+                        <p className="text-gray-400 text-sm ">max</p>
                         <h4 className={`text-2xl font-medium ${Number(data.from_start_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(data.from_start_change)} %`}</h4>
                     </div>
                 </div>
