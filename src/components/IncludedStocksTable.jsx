@@ -25,7 +25,7 @@ const IncludedStocksTable = ({ className }) => {
                         <th className="th-num hidden sm:table-cell">#</th>
                         <th className="">Namn</th>
                         <th className="th-num">Ägare</th>
-                        <th className="th-num">Vikt %</th>
+                        <th className="th-num">Vikt</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,7 +34,7 @@ const IncludedStocksTable = ({ className }) => {
                             <td className="td-num hidden sm:table-cell w-0">{i + 1}</td>
                             <td>{row.name}</td>
                             <td className="td-num">{new Intl.NumberFormat("en-GB", {minimumFractionDigits: 0}).format(row.owners)}</td>
-                            <td className="td-num">{`${new Intl.NumberFormat("se-SE", {minimumFractionDigits: 2}).format(row.weight)} %`}</td>
+                            <td className="td-num">{`${new Intl.NumberFormat("se-SE", {minimumFractionDigits: 2}).format(row.weight)}%`}</td>
                         </tr>
                     ))}
                 </tbody>
