@@ -27,7 +27,7 @@ function Performance() {
     return (
         <>
             <div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 items-end gap-5 mb-20">
+                <div className="grid grid-cols-2 sm:grid-cols-4 justify-items-center sm:justify-items-start items-end gap-5 mb-20">
                     <h4 className="text-6xl font-extralight text-white col-span-2">{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(data.value)}`}</h4>
                     <div>
                         <p className="text-gray-400 text-sm ">{compareDate(new Date(data.date), new Date()) ? 'i dag':formatShortDate(data.date)}</p>

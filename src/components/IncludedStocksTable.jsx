@@ -25,7 +25,7 @@ const IncludedStocksTable = ({ className }) => {
                         <th className="th-num hidden sm:table-cell">#</th>
                         <th className="">Namn</th>
                         <th className="th-num">Ägare</th>
-                        <th className="th-num">Vikt</th>
+                        <th className="th-num">Vikt %</th>
                     </tr>
                 </thead>
                 <tbody>
