@@ -7,7 +7,7 @@ import { graphic } from 'echarts';
 function toolTipFormatter(params) {
     return `${formatShortDate(params[0].name)} <br />
     <div style="display: flex; justify-content: space-between;"><div>${params[0].marker} <strong style="margin-right: 10px;">${params[0].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", {minimumFractionDigits: 2}).format(params[0].value[1])}</div>
-    <div style="display: flex; justify-content: space-between;"><div>${params[1].marker} <strong style="margin-right: 10px;">${params[1].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", {minimumFractionDigits: 2}).format(params[1].value[1])}</div>
+    <div style="display: flex; justify-content: space-between;"><div>${params[1].marker} <strong style="margin-right: 10px;">${params[1].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", {minimumFractionDigits: 2}).format(params[1n    ].value[1])}</div>
     `
 }
 
@@ -103,7 +103,7 @@ function Chart({ data, ...other }) {
 
                 data: data.graph.map(d => [d.date, d.compare]),
                 type: 'line',
-                color: '#4b5563',
+                color: '#881337',
                 showSymbol: false,
                 smooth: true,
                 lineStyle: {

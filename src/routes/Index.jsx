@@ -1,6 +1,7 @@
 import React from 'react';
 import IncludedStocksTable from '../components/IncludedStocksTable';
 import Performance from '../components/Performance';
+import Faq from '../components/Faq';
 
 function Index() {
   return (
@@ -12,6 +13,8 @@ function Index() {
 
       <Performance />
       <IncludedStocksTable className="" />
+
+      <Faq />
     </div>
   );
 }

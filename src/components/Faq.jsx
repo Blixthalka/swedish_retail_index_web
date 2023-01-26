@@ -3,23 +3,43 @@ import { PlusIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react';
 
 const Faq = ({ className }) => {
+    const [active, setActive] = useState(undefined)
+
+    const data = [
+        {
+            q: "Hur viktas indexet?",
+            a: <div className="grid gap-3">
+                <p>Indexet viktas genom att hämta antal ägare per aktie för de 50 aktier med mest ägare, summera antal ägare för top 50.</p>
+                <p>Aktiens ägare / summerade ägare = vikt i procent för aktien.</p>
+                <p>Viktas om varje dag. </p>
+            </div>,
+        },
+        {
+            q: "Inkluderar indexet utdelning?",
+            a: "Nej. Jämförelseindexet, OMXS30, är också valt efter detta.",
+        }
+    ]
 
 
     return (
         <div classname={className}>
-            <h3 className="text-gray-400 text-lg mb-3">How is the index calculated?</h3>
-            <div className="text-white text-sm">
-                <p className="mb-3">
-                    The index started with the value <strong>100</strong> on first of January 2023.
-                </p>
-                <p className="mb-3">
-                    And it's calculated by fetching the 50 most owned stocks each day from <a className="text-blue-400 hover:text-blue-500" href="https://www.avanza.se/aktier/lista.html/jxGl2hfp">Avanza</a>, and weighting them by number of owners.
-                    Thus the stocks gets a new weight each day, and might be replaced by another stock that have gained more owners.
-                </p>
-                <p>
-                    The index is calculated in <strong>SEK</strong>. Which means stocks denominated in other currencies will get fx exposure.
-                </p>
-            </div>
+            <h3 className="text-gray-400 text-lg mb-3">Vanliga Frågor</h3>
+            {data.map((d, index) => (
+                <div className={`text-sm border-l border-r border-b border-gray-800 ${index === 0 ? 'border-t' : ''}`}>
+                    <div
+                        onClick={(e) => setActive(active === index ? undefined : index)}
+                        className={`text-white p-3 hover:bg-gray-800 hover:cursor-pointer flex items-center justify-between  `}
+                    >
+                        <span>{d.q}</span>
+                        <PlusIcon className="w-5 h-5" />
+                    </div>
+                    {index === active && (
+                        <div className={`text-gray-400 p-3 border-t border-gray-800`}>
+                            {d.a}
+                        </div>
+                    )}
+                </div>
+            ))}
         </div>
     );
 }
