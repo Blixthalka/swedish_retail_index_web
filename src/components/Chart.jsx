@@ -4,6 +4,13 @@ import { formatShortDate } from '../utils/util';
 
 import { graphic } from 'echarts';
 
+function toolTipFormatter(params) {
+    return `${formatShortDate(params[0].name)} <br />
+    <div style="display: flex; justify-content: space-between;"><div>${params[0].marker} <strong style="margin-right: 10px;">${params[0].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", {minimumFractionDigits: 2}).format(params[0].value[1])}</div>
+    <div style="display: flex; justify-content: space-between;"><div>${params[1].marker} <strong style="margin-right: 10px;">${params[1].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", {minimumFractionDigits: 2}).format(params[1].value[1])}</div>
+    `
+}
+
 function Chart({ data, ...other }) {
     if (!data?.graph || data?.graph.length <= 1) {
         return (<></>)
@@ -46,8 +53,7 @@ function Chart({ data, ...other }) {
                 inside: true,
                 showMinLabel: false,
                 fontSize: 12
-            },
-            z: 3
+            }
         },
         tooltip: {
             trigger: 'axis',
@@ -59,29 +65,17 @@ function Chart({ data, ...other }) {
             },
             axisPointer: {
                 type: 'line'
-            }
-        },
+            },
+            formatter: toolTipFormatter
+         },
         grid: {
-            left: '0',
+            left: '5px',
             right: '5px',
             bottom: '0',
             top: '5px',
             containLabel: true
         },
         series: [
-            {
-
-                data: data.graph.map(d => [d.date, d.compare]),
-                type: 'line',
-                color: '#4b5563',
-                showSymbol: false,
-                smooth: true,
-                lineStyle: {
-                    width: 2
-                },
-                name: data.compare_name,
-                z: 2
-            },
             {
                 data: data.graph.map(d => [d.date, d.value]),
                 type: 'line',
@@ -105,12 +99,27 @@ function Chart({ data, ...other }) {
                 name: "SRI",
                 z: 4
             },
+            {
+
+                data: data.graph.map(d => [d.date, d.compare]),
+                type: 'line',
+                color: '#4b5563',
+                showSymbol: false,
+                smooth: true,
+                lineStyle: {
+                    width: 2
+                },
+                name: data.compare_name,
+                z:3
+            },
+
+
         ]
     };
 
 
     return (
-        <div {...other}>
+        <div {...other} style={{marginRight: '-5px', marginLeft: '-5px'}}>
             <ReactECharts
                 option={option}
                 notMerge={true}

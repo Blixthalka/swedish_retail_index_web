@@ -3,12 +3,12 @@ const months = [
   'feb',
   'mar',
   'apr',
-  'may',
+  'maj',
   'jun',
   'jul',
   'aug',
   'sep',
-  'oct',
+  'okt',
   'nov',
   'dec'
 ]
