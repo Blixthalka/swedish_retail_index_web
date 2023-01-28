@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
+//import { useNavigate } from "react-router-dom";
+
 
 const IncludedStocksTable = ({ className }) => {
     const [showAll, setShowAll] = useState(false)
     const [data, setData] = useState([])
+    //let navigate = useNavigate()
+
 
     useEffect(() => {
         fetch(`/api/instruments`)
@@ -30,6 +34,7 @@ const IncludedStocksTable = ({ className }) => {
                 </thead>
                 <tbody>
                     {instruments.map((row, i) => (
+                        // <tr className="clickable" onClick={(e) => navigate(`/instruments/${row.key}`)}>
                         <tr>
                             <td className="td-num hidden sm:table-cell w-0">{i + 1}</td>
                             <td>{row.name}</td>

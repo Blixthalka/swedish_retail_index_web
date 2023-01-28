@@ -6,6 +6,7 @@ import {
 import App from './App';
 import './index.css';
 import Index from './routes/Index';
+import Instrument from './routes/Instrument';
 import Wrapper from './Wrapper';
 
 
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route element={<App />}>
           <Route path="/" element={<Wrapper />} >
             <Route index element={<Index />} />
+            <Route path="/instruments/:key" element={<Instrument />} />
           </Route>
         </Route>
       </Routes>

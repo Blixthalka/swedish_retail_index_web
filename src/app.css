@@ -6,6 +6,10 @@ td, th {
     @apply p-2 border border-gray-800 text-sm  text-left;
 }
 
+.clickable {
+    @apply hover:bg-gray-800 hover:cursor-pointer;
+}
+
 .td-num {
     @apply text-right tabular-nums;
 }
