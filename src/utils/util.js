@@ -32,6 +32,10 @@ export const formatShortDate = (dateString) => {
   return date.getDate() + ' ' + months[date.getMonth()]
 }
 
+export const formatMonthYearDate = (dateString) => {
+  var date = new Date(dateString)
+  return date.getFullYear() + ' ' + months[date.getMonth()]
+}
 
 export const groupBy = function(values, grouping) {
 

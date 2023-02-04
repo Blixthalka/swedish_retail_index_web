@@ -1,6 +1,6 @@
 import ReactECharts from 'echarts-for-react';
 import React from 'react';
-import { formatShortDate } from '../utils/util';
+import { formatMonthYearDate } from '../utils/util';
 
 
 
@@ -20,7 +20,7 @@ function Chart({ data, ...other }) {
             type: "category",
             axisLabel: {
                 fontSize: 12,
-                formatter: formatShortDate
+                formatter: formatMonthYearDate
             }
         },
         yAxis: {

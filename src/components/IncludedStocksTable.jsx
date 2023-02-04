@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const IncludedStocksTable = ({ className }) => {
     const [showAll, setShowAll] = useState(false)
     const [data, setData] = useState([])
-    //let navigate = useNavigate()
+    let navigate = useNavigate()
 
 
     useEffect(() => {
@@ -34,8 +34,7 @@ const IncludedStocksTable = ({ className }) => {
                 </thead>
                 <tbody>
                     {instruments.map((row, i) => (
-                        // <tr className="clickable" onClick={(e) => navigate(`/instruments/${row.key}`)}>
-                        <tr>
+                         <tr className="clickable" onClick={(e) => navigate(`/instruments/${row.key}`)}>
                             <td className="td-num hidden sm:table-cell w-0">{i + 1}</td>
                             <td>{row.name}</td>
                             <td className="td-num">{new Intl.NumberFormat("en-GB", {minimumFractionDigits: 0}).format(row.owners)}</td>
