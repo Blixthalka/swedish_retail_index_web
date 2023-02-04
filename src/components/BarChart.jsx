@@ -1,6 +1,6 @@
 import ReactECharts from 'echarts-for-react';
 import React from 'react';
-import { formatMonthYearDate, formatNumberNoFractions } from '../utils/util';
+import { formatMonthYearDate } from '../utils/util';
 
 
 
