@@ -19,7 +19,9 @@ export const formatNumber = (num) => {
 }
 
 export const formatNumberNoFractions = (num) => {
-  return num?.toLocaleString(undefined, { minimumFractionDigits: 0 })
+  const res = num?.toLocaleString(undefined, { minimumFractionDigits: 0 })
+  console.log(num, JSON.stringify(res))
+  return res
 }
 
 export const formatDate = (dateString) => {

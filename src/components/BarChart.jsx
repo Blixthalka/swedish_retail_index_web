@@ -1,6 +1,6 @@
 import ReactECharts from 'echarts-for-react';
 import React from 'react';
-import { formatMonthYearDate } from '../utils/util';
+import { formatMonthYearDate, formatNumberNoFractions } from '../utils/util';
 
 
 
@@ -21,7 +21,10 @@ function Chart({ data, ...other }) {
             axisLabel: {
                 fontSize: 12,
                 formatter: formatMonthYearDate
-            }
+            },
+            axisPointer: {
+                type: 'none'
+            },
         },
         yAxis: {
             type: 'value',
@@ -37,7 +40,8 @@ function Chart({ data, ...other }) {
                 inside: false,
                 showMinLabel: false,
                 fontSize: 12
-            }
+            },
+
         },
         tooltip: {
             trigger: 'axis',
@@ -47,7 +51,7 @@ function Chart({ data, ...other }) {
                 fontSize: 14,
                 color: "#fff"
             },
-         },
+        },
         grid: {
             left: '5px',
             right: '5px',
@@ -61,13 +65,20 @@ function Chart({ data, ...other }) {
                 type: 'bar',
                 color: '#2563eb',
                 name: "Ägare",
-            }
+                label: {
+                    show: true,
+                    position: 'inside',
+                    formatter: function(params) {
+                        return new Intl.NumberFormat("en-GB", {minimumFractionDigits: 0}).format((params.data[1]))
+                    }
+                  },
+            },
         ]
     };
 
 
     return (
-        <div {...other} style={{marginRight: '-5px', marginLeft: '-5px'}}>
+        <div {...other} style={{ marginRight: '-5px', marginLeft: '-5px' }}>
             <ReactECharts
                 option={option}
                 notMerge={true}
