@@ -11,7 +11,7 @@ function toolTipFormatter(params) {
     `
 }
 
-function Chart({ data, ...other }) {
+function Chart({ data, name, compareName, ...other }) {
     if (!data?.graph || data?.graph.length <= 1) {
         return (<></>)
     }
@@ -96,7 +96,7 @@ function Chart({ data, ...other }) {
                             color: 'rgba(255, 255, 255, 0.00)'
                         }])
                 },
-                name: "SRI",
+                name: name,
                 z: 4
             },
             {
@@ -109,7 +109,7 @@ function Chart({ data, ...other }) {
                 lineStyle: {
                     width: 2
                 },
-                name: data.compare_name,
+                name: compareName,
                 z:3
             },
 

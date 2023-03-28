@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
-
+import Chart from '../components/Chart';
 import BarChart from '../components/BarChart';
 
 function Instrument() {
@@ -54,6 +54,9 @@ function Instrument() {
                 <h1 className="text-white text-3xl font-medium mb-3">{state.instrument.name}</h1>
             </div>
 
+            <div>
+                <Chart name={state.instrument.name} compareName={"SRI"} data={state.instrument} />
+            </div>
             <div>
                 <h3 className="text-gray-400 text-lg mb-3">Ägare</h3>
                 <BarChart data={state.instrument.owners} />

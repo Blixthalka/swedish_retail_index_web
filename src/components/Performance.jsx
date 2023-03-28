@@ -39,7 +39,7 @@ function Performance() {
                     </div>
                 </div>
 
-                <Chart data={data} />
+                <Chart name={"SRI"} compareName={"OMXS30"} data={data} />
 
             </div>
         </>
