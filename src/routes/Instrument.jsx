@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
-import Chart from '../components/Chart';
+import Performance from '../components/Performance';
 import BarChart from '../components/BarChart';
 
 function Instrument() {
@@ -55,7 +55,7 @@ function Instrument() {
             </div>
 
             <div>
-                <Chart name={state.instrument.name} compareName={"SRI"} data={state.instrument} />
+                <Performance graph={state.instrument.graph} />
             </div>
             <div>
                 <h3 className="text-gray-400 text-lg mb-3">Ägare</h3>

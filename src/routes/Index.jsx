@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import IncludedStocksTable from '../components/IncludedStocksTable';
 import Performance from '../components/Performance';
 import Faq from '../components/Faq';
 
 function Index() {
+  const [index, setIndex] = useState(undefined);
+
+  useEffect(() => {
+      fetch(`/api/index`)
+          .then(i => i.json())
+          .then(i => {
+            setIndex(i)
+          })
+  }, [])
+
   return (
     <div className="my-20 grid gap-20">
       <div>
@@ -11,7 +21,7 @@ function Index() {
         <h3 className="text-gray-400 text-lg">Ett aktie-index som består av de 50 mest ägda aktierna av småsparare i Sverige.</h3>
       </div>
 
-      <Performance />
+      <Performance graph={index?.graph} />
       <IncludedStocksTable className="" />
 
       <Faq />

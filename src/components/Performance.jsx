@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { formatShortDate } from '../utils/util';
 import Chart from './Chart';
 
 
-function Performance() {
-    const [data, setData] = useState(undefined);
+function Performance({ graph }) {
 
-    useEffect(() => {
-        fetch(`/api/index`)
-            .then(i => i.json())
-            .then(i => {
-                setData(i)
-            })
-    }, [])
-
-    if (!data) {
+    if (!graph) {
         return (<></>)
     }
 
@@ -28,18 +19,24 @@ function Performance() {
         <>
             <div>
                 <div className="grid grid-cols-2 sm:gap-5 gap-10 sm:grid-cols-4 justify-items-center sm:justify-items-start items-end  mb-20">
-                    <h4 className="text-6xl font-extralight text-white col-span-2">{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(data.value)}`}</h4>
+                    <h4 className="text-6xl font-extralight text-white col-span-2">
+                        {`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(graph.value)}`}
+                    </h4>
                     <div>
-                        <p className="text-gray-400 text-sm ">{compareDate(new Date(data.date), new Date()) ? 'i dag':formatShortDate(data.date)}</p>
-                        <h4 className={`text-2xl font-medium ${Number(data.last_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(data.last_change)} %`}</h4>
+                        <p className="text-gray-400 text-sm ">{compareDate(new Date(graph.date), new Date()) ? 'i dag' : formatShortDate(graph.date)}</p>
+                        <h4 className={`text-2xl font-medium ${Number(graph.last_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>
+                            {`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(graph.last_change)} %`}
+                        </h4>
                     </div>
                     <div>
                         <p className="text-gray-400 text-sm ">i år</p>
-                        <h4 className={`text-2xl font-medium ${Number(data.from_start_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>{`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(data.from_start_change)} %`}</h4>
+                        <h4 className={`text-2xl font-medium ${Number(graph.from_start_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>
+                            {`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(graph.from_start_change)} %`}
+                        </h4>
                     </div>
                 </div>
 
-                <Chart name={"SRI"} compareName={"OMXS30"} data={data} />
+                <Chart graph={graph} />
 
             </div>
         </>

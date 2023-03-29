@@ -11,11 +11,10 @@ function toolTipFormatter(params) {
     `
 }
 
-function Chart({ data, name, compareName, ...other }) {
-    if (!data?.graph || data?.graph.length <= 1) {
+function Chart({ graph, ...other }) {
+    if (!graph?.series || graph?.series.length <= 1) {
         return (<></>)
     }
-    console.log(data)
 
     let option = {
         backgroundColor: "transparent",
@@ -38,8 +37,8 @@ function Chart({ data, name, compareName, ...other }) {
         },
         yAxis: {
             type: 'value',
-            min: Math.floor(Number(data.min) - 2),
-            max: Math.ceil(Number(data.max) + 2),
+            min: Math.floor(Number(graph.min) - 2),
+            max: Math.ceil(Number(graph.max) + 2),
             splitLine: {
                 lineStyle: {
                     type: "dashed",
@@ -77,7 +76,7 @@ function Chart({ data, name, compareName, ...other }) {
         },
         series: [
             {
-                data: data.graph.map(d => [d.date, d.value]),
+                data: graph.series.map(d => [d.date, d.value]),
                 type: 'line',
                 color: '#fff',
                 showSymbol: false,
@@ -96,12 +95,12 @@ function Chart({ data, name, compareName, ...other }) {
                             color: 'rgba(255, 255, 255, 0.00)'
                         }])
                 },
-                name: name,
+                name: graph.main_name,
                 z: 4
             },
             {
 
-                data: data.graph.map(d => [d.date, d.compare]),
+                data: graph.series.map(d => [d.date, d.compare]),
                 type: 'line',
                 color: '#881337',
                 showSymbol: false,
@@ -109,7 +108,7 @@ function Chart({ data, name, compareName, ...other }) {
                 lineStyle: {
                     width: 2
                 },
-                name: compareName,
+                name: graph.compare_name,
                 z:3
             },
 
