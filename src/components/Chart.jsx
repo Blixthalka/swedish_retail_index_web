@@ -37,14 +37,18 @@ function Chart({ graph, ...other }) {
         },
         yAxis: {
             type: 'value',
-            min: Number(graph.min) - (0.1 * Number(graph.min)),
+            min: Number(graph.min) * 0.99,
+            //min: Number(graph.min),
             splitLine: {
                 lineStyle: {
                     type: "dashed",
                     color: "#1f2937"
                 }
             },
-
+            axisLine: {
+                onZero: false
+            },
+            boundaryGap: false,
             position: 'right',
             axisLabel: {
                 show: true,
