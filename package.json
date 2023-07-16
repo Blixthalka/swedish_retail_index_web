@@ -2,7 +2,7 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://srindex.se",
+  "proxy": "http://localhost:8082",
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",

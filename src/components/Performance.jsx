@@ -3,10 +3,25 @@ import { formatShortDate } from '../utils/util';
 import Chart from './Chart';
 
 
-function Performance({ graph }) {
+function Performance({ graph, setPeroid, period }) {
 
     if (!graph) {
         return (<></>)
+    }
+
+    const periods = [
+        { name: "i år", value: "ytd" },
+        { name: "6 m", value: "6m" },
+        { name: "3 m", value: "3m" },
+        { name: "1 m", value: "1m" }
+    ]
+
+    const currentPeriod = periods.find(p => p.value === period)
+    let currentPeriodName = ""
+    if (currentPeriod === undefined) {
+        currentPeriodName = "i år"
+    } else {
+        currentPeriodName = currentPeriod.name
     }
 
     const compareDate = (d1, d2) => {
@@ -29,7 +44,7 @@ function Performance({ graph }) {
                         </h4>
                     </div>
                     <div>
-                        <p className="text-gray-400 text-sm ">i år</p>
+                        <p className="text-gray-400 text-sm ">{currentPeriodName}</p>
                         <h4 className={`text-2xl font-medium ${Number(graph.from_start_change) >= 0 ? "text-blue-400" : "text-red-400"}`}>
                             {`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(graph.from_start_change)} %`}
                         </h4>
@@ -37,10 +52,25 @@ function Performance({ graph }) {
                 </div>
 
                 <Chart graph={graph} />
+                {setPeroid &&
+                    <div className='flex justify-end'>
+                        <div className="text-white mt-5 grid gap-2 grid-cols-4">
+                            {periods.map((p) => (<Period name={p.name} value={p.value} setPeroid={setPeroid} selected={p.value == period} />))}
+
+                        </div>
+                    </div>}
 
             </div>
         </>
     );
+}
+
+const Period = ({ name, value, setPeroid, selected }) => {
+    return (
+        <button className={`border border-gray-800  text-sm px-2 py-1 rounded hover:bg-gray-800 hover:border-gray-800 ${selected && "bg-blue-500 border-blue-500"}`} onClick={(E) => setPeroid(value)}>
+            {name}
+        </button>
+    )
 }
 
 export default Performance;

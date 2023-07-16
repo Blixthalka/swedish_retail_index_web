@@ -5,11 +5,12 @@ import BarChart from '../components/BarChart';
 
 function Instrument() {
     const [state, setState] = useState({ isLoading: true })
+    const [period, setPeriod] = useState("ytd")
     let params = useParams();
 
 
     useEffect(() => {
-        fetch(`/api/instruments/${params.key}`)
+        fetch(`/api/instruments/${params.key}?period=${period}`)
             .then(resp => {
 
                 if (resp.status !== 200) {
@@ -32,7 +33,7 @@ function Instrument() {
                     })
                 });
 
-    }, [params.key])
+    }, [params.key, period])
 
     if (state.isLoading) {
         return (
@@ -55,7 +56,7 @@ function Instrument() {
             </div>
 
             <div>
-                <Performance graph={state.instrument.graph} />
+                <Performance graph={state.instrument.graph} setPeroid={setPeriod} period={period} />
             </div>
             <div>
                 <h3 className="text-gray-400 text-lg mb-3">Ägare</h3>

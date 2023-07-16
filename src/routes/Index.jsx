@@ -5,14 +5,15 @@ import Faq from '../components/Faq';
 
 function Index() {
   const [index, setIndex] = useState(undefined);
+  const [period, setPeriod] = useState('ytd')
 
   useEffect(() => {
-      fetch(`/api/index`)
+      fetch(`/api/index?period=${period}`)
           .then(i => i.json())
           .then(i => {
             setIndex(i)
           })
-  }, [])
+  }, [period])
 
   return (
     <div className="my-20 grid gap-20">
@@ -21,7 +22,7 @@ function Index() {
         <h3 className="text-gray-400 text-lg">Ett aktie-index som består av de 50 mest ägda aktierna av småsparare i Sverige.</h3>
       </div>
 
-      <Performance graph={index?.graph} />
+      <Performance graph={index?.graph} period={period} setPeroid={setPeriod} />
       <IncludedStocksTable className="" />
 
       <Faq />

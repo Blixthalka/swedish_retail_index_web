@@ -29,7 +29,7 @@ function Chart({ graph, ...other }) {
             type: 'category',
             boundaryGap: false,
             axisLabel: {
-                fontSize: 12,
+                fontSize: 14,
                 showMinLabel: false,
                 showMaxLabel: false,
                 formatter: formatShortDate
