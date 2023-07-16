@@ -55,7 +55,7 @@ function Performance({ graph, setPeroid, period }) {
                 {setPeroid &&
                     <div className='flex justify-end'>
                         <div className="text-white mt-5 grid gap-2 grid-cols-4">
-                            {periods.map((p) => (<Period name={p.name} value={p.value} setPeroid={setPeroid} selected={p.value == period} />))}
+                            {periods.map((p) => (<Period name={p.name} value={p.value} setPeroid={setPeroid} selected={p.value === period} />))}
 
                         </div>
                     </div>}
