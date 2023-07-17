@@ -85,6 +85,8 @@ function Chart({ graph, ...other }) {
                 color: '#fff',
                 showSymbol: false,
                 smooth: true,
+                datasetId: 'main',
+                universalTransition: true,
                 lineStyle: {
                     width: 2
                 },
@@ -109,15 +111,20 @@ function Chart({ graph, ...other }) {
                 color: '#881337',
                 showSymbol: false,
                 smooth: true,
+                datasetId: 'compare',
+                universalTransition: true,
                 lineStyle: {
                     width: 2
                 },
                 name: graph.compare_name,
                 z:3
             },
+        ],
+        stateAnimation: {
+            duration: 10000
+        }
 
 
-        ]
     };
 
 

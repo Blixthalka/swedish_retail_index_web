@@ -67,7 +67,7 @@ function Performance({ graph, setPeroid, period }) {
 
 const Period = ({ name, value, setPeroid, selected }) => {
     return (
-        <button className={`border border-gray-800  text-sm px-2 py-1 rounded hover:bg-gray-800 hover:border-gray-800 ${selected && "bg-blue-500 border-blue-500"}`} onClick={(E) => setPeroid(value)}>
+        <button className={`border text-white border-gray-800  text-sm px-2 py-1 rounded hover:bg-gray-800  ${selected && "  border-white"}`} onClick={(E) => setPeroid(value)}>
             {name}
         </button>
     )

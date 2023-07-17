@@ -73,7 +73,7 @@ function Chart({ data, ...other }) {
                     }
                   },
             },
-        ]
+        ],
     };
 
 

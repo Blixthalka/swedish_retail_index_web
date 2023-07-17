@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import IncludedStocksTable from '../components/IncludedStocksTable';
 import Performance from '../components/Performance';
+import Change from '../components/Change';
 import Faq from '../components/Faq';
 
 function Index() {
@@ -24,6 +25,7 @@ function Index() {
 
       <Performance graph={index?.graph} period={period} setPeroid={setPeriod} />
       <IncludedStocksTable className="" />
+      <Change />
 
       <Faq />
     </div>
