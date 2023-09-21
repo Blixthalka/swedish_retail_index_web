@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
-import Performance from '../components/Performance';
 import Chart from '../components/Chart';
-import BarChart from '../components/BarChart';
+import Performance from '../components/Performance';
 
 
 function Instrument() {
