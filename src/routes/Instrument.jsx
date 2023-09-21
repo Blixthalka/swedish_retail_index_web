@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import Performance from '../components/Performance';
+import Chart from '../components/Chart';
 import BarChart from '../components/BarChart';
+
 
 function Instrument() {
     const [state, setState] = useState({ isLoading: true })
@@ -60,7 +62,7 @@ function Instrument() {
             </div>
             <div>
                 <h3 className="text-gray-400 text-lg mb-3">Ägare</h3>
-                <BarChart data={state.instrument.owners} />
+                <Chart graph={state.instrument.owners} />
             </div>
         </div>
     );
