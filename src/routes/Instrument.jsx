@@ -52,8 +52,9 @@ function Instrument() {
 
     return (
         <div className="my-20 grid gap-20">
-            <div>
-                <h1 className="text-white text-3xl font-medium mb-3">{state.instrument.name}</h1>
+            <div className='relative py-10'>
+                <h1 className="text-white text-4xl font-bold text-center mb-3">{state.instrument.name}</h1>
+                <div className='dots -z-10' />
             </div>
 
             <div>
@@ -62,6 +63,20 @@ function Instrument() {
             <div>
                 <h3 className="text-gray-400 text-lg mb-3">Ägare</h3>
                 <Chart graph={state.instrument.owners} />
+                <div className="grid grid-cols-2 gap-10 justify-items-center items-end text-white mt-5">
+                    <div>
+                        <p className="text-gray-400 text-sm ">{"min"}</p>
+                        <h4 className={`text-3xl font-medium`}>
+                            {`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 0 }).format(state.instrument.owners.min)}`}
+                        </h4>
+                    </div>
+                    <div>
+                        <p className="text-gray-400 text-sm ">{"max"}</p>
+                        <h4 className={`text-3xl font-medium `}>
+                            {`${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 0 }).format(state.instrument.owners.max)}`}
+                        </h4>
+                    </div>
+                </div>
             </div>
         </div>
     );

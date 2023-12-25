@@ -1,0 +1,13 @@
+.dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    background-image: radial-gradient(#28292e 1px, transparent 0);
+    background-size: 7px 7px;
+    background-position: -8.5px -8.5px;
+
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1), transparent 80%);
+}

@@ -18,10 +18,15 @@ function Index() {
 
   return (
     <div className="my-20 grid gap-20">
-      <div>
-        <h1 className="text-white text-3xl font-medium mb-3">Swedish Retail Index.</h1>
-        <h3 className="text-gray-400 text-lg">Ett aktie-index som består av de 50 mest ägda aktierna av småsparare i Sverige.</h3>
+
+
+      <div className='relative py-10'>
+        <h1 className="text-white text-3xl font-extrabold mb-3 z-10 text-center">SWEDISH RETAIL INDEX</h1>
+        <h3 className="text-gray-400 text-lg z-10 text-center">Ett aktie-index som består av de 50 mest ägda aktierna av småsparare i Sverige.</h3>
+        <div className='dots -z-10'/>
       </div>
+
+
 
       <Performance graph={index?.graph} period={period} setPeroid={setPeriod} />
       <IncludedStocksTable className="" />

@@ -1,20 +1,20 @@
 import ReactECharts from 'echarts-for-react';
 import React from 'react';
 import { formatShortDate } from '../utils/util';
-
+import './dots.css'
 import { graphic } from 'echarts';
 
 function toolTipFormatterCompare(params) {
     return `${formatShortDate(params[0].name)} <br />
-    <div style="display: flex; justify-content: space-between;"><div>${params[0].marker} <strong style="margin-right: 10px;">${params[0].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", {minimumFractionDigits: 2}).format(params[0].value[1])}</div>
-    <div style="display: flex; justify-content: space-between;"><div>${params[1].marker} <strong style="margin-right: 10px;">${params[1].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", {minimumFractionDigits: 2}).format(params[1].value[1])}</div>
+    <div style="display: flex; justify-content: space-between;"><div>${params[0].marker} <strong style="margin-right: 10px;">${params[0].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(params[0].value[1])}</div>
+    <div style="display: flex; justify-content: space-between;"><div>${params[1].marker} <strong style="margin-right: 10px;">${params[1].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(params[1].value[1])}</div>
     `
 }
 
 
 function toolTipFormatter(params) {
     return `${formatShortDate(params[0].name)} <br />
-    <div style="display: flex; justify-content: space-between;"><div>${params[0].marker} <strong style="margin-right: 10px;">${params[0].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", {minimumFractionDigits: 2}).format(params[0].value[1])}</div>
+    <div style="display: flex; justify-content: space-between;"><div>${params[0].marker} <strong style="margin-right: 10px;">${params[0].seriesName}</strong></div>${new Intl.NumberFormat("se-SE", { minimumFractionDigits: 2 }).format(params[0].value[1])}</div>
     `
 }
 
@@ -35,17 +35,6 @@ function Chart({ graph, ...other }) {
             lineStyle: {
                 width: 2
             },
-            areaStyle: {
-                color: new graphic.LinearGradient(0, 0, 0, 1, [
-                    {
-                        offset: 0,
-                        color: 'rgba(255, 255, 255, 0.1)'
-                    },
-                    {
-                        offset: 1,
-                        color: 'rgba(255, 255, 255, 0.00)'
-                    }])
-            },
             name: graph.main_name || "ads",
             z: 4
         },
@@ -56,7 +45,7 @@ function Chart({ graph, ...other }) {
         series.push({
             data: graph.series.map(d => [d.date, d.compare]),
             type: 'line',
-            color: '#881337',
+            color: 'rgba(258, 258, 258, 0.2)',
             showSymbol: false,
             smooth: true,
             datasetId: 'compare',
@@ -85,6 +74,7 @@ function Chart({ graph, ...other }) {
                 fontSize: 14,
                 showMinLabel: false,
                 showMaxLabel: false,
+                show: false,
                 formatter: formatShortDate
             }
         },
@@ -93,18 +83,19 @@ function Chart({ graph, ...other }) {
             min: Number(graph.min) * 0.99,
             //min: Number(graph.min),
             splitLine: {
+                show: false,
                 lineStyle: {
                     type: "dashed",
                     color: "#1f2937"
                 }
             },
             axisLine: {
-                onZero: false
+                onZero: false,
             },
             boundaryGap: false,
             position: 'right',
             axisLabel: {
-                show: true,
+                show: false,
                 inside: true,
                 showMinLabel: false,
                 showMaxLabel: true,
@@ -141,7 +132,8 @@ function Chart({ graph, ...other }) {
 
 
     return (
-        <div {...other} style={{ marginRight: '-5px', marginLeft: '-5px' }}>
+        <div {...other} style={{ marginRight: '-5px', marginLeft: '-5px' }} className='relative'>
+            <div className='dots' />
             <ReactECharts
                 option={option}
                 notMerge={true}
