@@ -1,8 +1,7 @@
 import ReactECharts from 'echarts-for-react';
 import React from 'react';
 import { formatShortDate } from '../utils/util';
-import './dots.css'
-import { graphic } from 'echarts';
+import './dots.css';
 
 function toolTipFormatterCompare(params) {
     return `${formatShortDate(params[0].name)} <br />
