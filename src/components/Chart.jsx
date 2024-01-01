@@ -19,8 +19,9 @@ function toolTipFormatter(params) {
 
 function Chart({ graph, ...other }) {
     if (!graph?.series || graph?.series.length <= 1) {
-        return (<></>)
+        return (<div></div>)
     }
+
 
     const series = [
         {
