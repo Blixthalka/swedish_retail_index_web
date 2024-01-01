@@ -6,7 +6,7 @@ import Performance from '../components/Performance';
 
 function Instrument() {
     const [state, setState] = useState({ isLoading: true })
-    const [period, setPeriod] = useState("ytd")
+    const [period, setPeriod] = useState("1y")
     let params = useParams();
 
 

@@ -6,7 +6,7 @@ import Faq from '../components/Faq';
 
 function Index() {
   const [index, setIndex] = useState(undefined);
-  const [period, setPeriod] = useState('ytd')
+  const [period, setPeriod] = useState('1y')
 
   useEffect(() => {
       fetch(`/api/index?period=${period}`)
