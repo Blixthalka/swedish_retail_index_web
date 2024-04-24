@@ -19,7 +19,7 @@ function toolTipFormatter(params) {
 
 function Chart({ graph, ...other }) {
     if (!graph?.series || graph?.series.length <= 1) {
-        return (<div></div>)
+        return (<div className='h-96'></div>)
     }
 
 

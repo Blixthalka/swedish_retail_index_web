@@ -6,7 +6,7 @@ import Chart from './Chart';
 function Performance({ graph, setPeroid, period }) {
 
     if (!graph) {
-        return (<></>)
+        return (<div className='h-96'></div>)
     }
 
     const periods = [
